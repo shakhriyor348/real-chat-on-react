@@ -9,13 +9,13 @@ import 'firebase/compat/firestore';
 
 // Initialize Firebase
 firebase.initializeApp({
-  apiKey: "AIzaSyDQGr3kOjoeOvewD0uCX4GLIkm4rde-GhE",
-  authDomain: "chat-react-41234.firebaseapp.com",
-  projectId: "chat-react-41234",
-  storageBucket: "chat-react-41234.appspot.com",
-  messagingSenderId: "745207510163",
-  appId: "1:745207510163:web:58a088bc5bcb2d38a4c966",
-  measurementId: "G-B324QJLS2D"
+  apiKey: "AIzaSyB4_jTdLpknPXFEK0AgkPcq4M29y24Dli4",
+  authDomain: "chat-7263a.firebaseapp.com",
+  projectId: "chat-7263a",
+  storageBucket: "chat-7263a.appspot.com",
+  messagingSenderId: "271034399294",
+  appId: "1:271034399294:web:c09ab5a198c8be1c756f6f",
+  measurementId: "G-6KMVGMVVMX"
 });
 
 export const Context = createContext(null);
