@@ -21,6 +21,7 @@ const Chat = () => {
   
   const sendMessage = async () => {
     firestore.collection('messages').add({
+      id: Math.random().toString(36).substring(2, 9),
       uid: user.uid,
       displayName: user.displayName,
       photoURL: user.photoURL,
@@ -28,9 +29,7 @@ const Chat = () => {
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     })
     setValue('')
-    console.log(message.docs);
   }
-  // console.log(message.docs);
 
   if (loading) {
     return <Loader />
@@ -46,14 +45,14 @@ const Chat = () => {
         <div style={{ width: '80%', height: '70vh', border: '1px solid gray', overflowY: 'auto' }}>
           {message.docs.map((doc) => {
             return (
-              <div style={{
+              <div key={doc.id} style={{
                 margin: 10,
                 border: user.uid === doc.data().uid ? '2px solid green' : '2px dashed red',
                 marginLeft: user.uid === doc.data().uid ? 'auto' : '10px',
                 width: 'fit-content',
                 padding: 5
               }}>
-                <Grid container>
+                <Grid container style={{display: 'flex', alignItems: 'center', columnGap: '15px'}}>
                   <Avatar src={doc.data().photoURL} />
                   <div>{doc.data().displayName}</div>
                 </Grid>
@@ -68,7 +67,7 @@ const Chat = () => {
           alignItems={'flex-end'}
           style={{ width: '80%' }}>
           <TextField value={value} onChange={changeInput} fullWidth variant='outlined' maxRows={2} />
-          <Button onClick={sendMessage} variant='outlined' style={{ marginTop: 10 }}>Отправить</Button>
+          <Button onSubmit={sendMessage} onClick={sendMessage} variant='outlined' style={{ marginTop: 10 }}>Отправить</Button>
         </Grid>
       </Grid>
     </Container>
